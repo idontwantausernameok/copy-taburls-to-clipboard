@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
-	"name": "tab2clip",
+	"name": "tabs2clip",
 	"description": "copy tab urls of active window into the clipboard",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "igorlogius",
 	"background": {
 		"scripts": [
