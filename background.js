@@ -46,7 +46,7 @@ async function onBrowserActionClicked() {
 
 	browser.notifications.create(extId, {
 		"type": "basic",
-		"iconUrl": browser.runtime.getURL("icons.png"),
+		"iconUrl": browser.runtime.getURL("icon.png"),
 		"title": notify_title, 
 		"message":  notify_message 
 	});
