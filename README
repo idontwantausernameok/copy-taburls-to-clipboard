@@ -20,23 +20,8 @@ wget -q --show-progress 'https://github.com/igorlogius/tabs2clip/archive/master.
 # extract without paths and README
 unzip -j $ZIPFILE -d $EXTRDIR -x "*/README"
 
-COMMIT_HASH_SHORT=$(wget --header="Accept: application/vnd.github.VERSION.sha" -qO- http://api.github.com/repos/igorlogius/tabs2clip/commits/master | cut -c1-7)
-
-MAJOR_VERSION=$(grep '"version"' $EXTRDIR/manifest.json |cut -d'"' -f4);
-
-NEW_VERSION="${MAJOR_VERSION}${COMMIT_HASH_SHORT}";
-
-# insert commit hash into manifest 
-sed -i "s/\"version\".*/\"version\": \"${NEW_VERSION}\"/" $EXTRDIR/manifest.json
-
-cat $EXTRDIR/manifest.json
-
-cd $EXTRDIR/
-web-ext lint
-cd ..
-
 # re-pack as xpi (zip) without paths and extended file attributes 
-XPI="tabs2clip-${NEW_VERSION}-$(date '+%F_%T').xpi"
+XPI="tabs2clip-$(grep '"version"' $EXTRDIR/manifest.json |cut -d'"' -f4)-$(date '+%F_%T').xpi" 
 zip -X -j $XPI $EXTRDIR/*
 
 # remove tmp storage
