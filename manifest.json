@@ -1,21 +1,21 @@
 {
-	"manifest_version": 2,
-	"name": "tabs2clip",
-	"description": "copy tab urls of active window into the clipboard",
-	"version": "1.0.1",
-	"author": "igorlogius",
-	"background": {
-		"scripts": [
-			"background.js"
-		]
-	},
-	"browser_action": {
-		"default_icon": "icon.png",
-		"default_title": "copy urls"
-	},
-	"permissions": [
-		"tabs",
-		"clipboardWrite",
-		"notifications"
-	]
+  "author": "igorlogius",
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "copy urls"
+  },
+  "description": "copy tab urls of active window into the clipboard",
+  "manifest_version": 2,
+  "name": "tabs2clip",
+  "permissions": [
+    "tabs",
+    "clipboardWrite",
+    "notifications"
+  ],
+  "version": "1.0.1"
 }
