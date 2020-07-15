@@ -10,6 +10,9 @@
     "default_title": "copy urls"
   },
   "description": "copy tab urls of active window into the clipboard",
+  "icons": {
+    "128": "icon.png"
+  },
   "manifest_version": 2,
   "name": "tabs2clip",
   "permissions": [
