@@ -1,6 +1,6 @@
 
 const extId = 'tabs2clip';
-const excluded_urls = ['chrome:','moz:','about:','data:','blob:'];
+const excluded_urls = ['chrome','moz','about','data','blob'];
 
 async function onBrowserActionClicked() { 
 
