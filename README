@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Details
-# https://addons.mozilla.org/en-US/firefox/addon/tabs2clip/
+# variables
+ID="tabs2clip"
+BRANCH="master"
 
+# check build requirements
 MISSING_REQ=0
 for req in mktemp wget unzip zip grep cut date;do
 	type $req >/dev/null 2>&1 || { echo >&2 "Missing dependency: $req"; MISSING_REQ=1; }
@@ -15,13 +17,13 @@ ZIPFILE=$(mktemp)
 EXTRDIR=$(mktemp -d)
 
 # download
-wget -q --show-progress 'https://github.com/igorlogius/tabs2clip/archive/master.zip' -O $ZIPFILE
+wget -q --show-progress "https://github.com/igorlogius/$ID/archive/$BRANCH.zip" -O $ZIPFILE
 
 # extract without paths and README
 unzip -j $ZIPFILE -d $EXTRDIR -x "*/README"
 
 # re-pack as xpi (zip) without paths and extended file attributes 
-XPI="tabs2clip-$(grep '"version"' $EXTRDIR/manifest.json |cut -d'"' -f4)-$(date '+%F_%T').xpi" 
+XPI="$ID-$(grep '"version"' $EXTRDIR/manifest.json |cut -d'"' -f4)-$(date '+%F_%T').xpi" 
 zip -X -j $XPI $EXTRDIR/*
 
 # remove tmp storage
@@ -30,3 +32,4 @@ rm -f $EXTRDIR/* && rmdir $EXTRDIR/
 # show conent of xpi
 unzip -l $XPI
 
+echo "Homepage: https://addons.mozilla.org/en-US/firefox/addon/$ID"
