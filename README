@@ -2,7 +2,7 @@
 
 # variables
 ID="tabs2clip"
-BRANCH="master"
+BRANCH="main"
 
 # check build requirements
 MISSING_REQ=0
