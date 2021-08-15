@@ -1,5 +1,8 @@
 
-const extId = 'tabs2clip';
+const temporary = browser.runtime.id.endsWith('@temporary-addon'); // debugging?
+const manifest = browser.runtime.getManifest();
+const extname = manifest.name;
+
 const excluded_urls = ['chrome','moz','about','data','blob'];
 
 async function onBrowserActionClicked() { 
@@ -10,7 +13,7 @@ async function onBrowserActionClicked() {
 	try {
 
 		// query all tabs from active Window
-		const tabs = await browser.tabs.query({currentWindow: true});
+		const tabs = await browser.tabs.query({hidden: false, currentWindow: true});
 
 		// url storage
 		let clipText = '';
@@ -44,7 +47,7 @@ async function onBrowserActionClicked() {
 		notify_message = e.message;
 	}
 
-	browser.notifications.create(extId, {
+	browser.notifications.create(extname, {
 		"type": "basic",
 		"iconUrl": browser.runtime.getURL("icon.png"),
 		"title": notify_title, 
