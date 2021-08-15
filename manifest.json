@@ -16,16 +16,16 @@
     "default_icon": "icon.png",
     "default_title": "copy urls"
   },
-  "description": "copy tab urls of active window into the clipboard",
+  "description": "copy taburls of active window into the clipboard",
   "icons": {
     "128": "icon.png"
   },
   "manifest_version": 2,
-  "name": "copy-tabs-urls-to-clipboard",
+  "name": "copy-taburls-to-clipboard",
   "permissions": [
     "tabs",
     "clipboardWrite",
     "notifications"
   ],
-  "version": "1.0.5"
+  "version": "1.0.6"
 }
